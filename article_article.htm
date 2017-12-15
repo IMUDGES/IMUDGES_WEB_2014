@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}" />
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field.keywords/}" />
+<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+<link href="{dede:global.cfg_templeturl/}/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<meta http-equiv="mobile-agent" content="format=xhtml;url={dede:global.cfg_mobileurl/}/view.php?aid={dede:field.id/}">
+<link rel="stylesheet" type="text/css" href="{dede:global.cfg_templeturl/}/imudges/css/isotope.css" media="screen" />	
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/css/bootstrap.css">
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/css/style.css">
+	
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{dede:global.cfg_mobileurl/}/view.php?aid={dede:field.id/}";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
+
+<script language="javascript" type="text/javascript">
+<!--
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("{dede:field name='phpurl'/}/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+</script>
+</head>
+<body class="articleview">
+{dede:include filename="header.htm"/}
+<!-- /header -->
+<section class="featured">
+			<div class="container" > 
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="align-center">
+							<h3 class="slogan">{dede:field.title/}</h3>
+                            <span><div class="info"> <small>时间:</small>{dede:field.pubdate function="MyDate('Y-m-d H:i',@me)"/}<small>来源:</small>{dede:field.source/} <small>作者:</small>{dede:field.writer/} <small>点击:</small>
+   <script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}" type='text/javascript' language="javascript"></script>
+   次</div></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+  <div class="container">
+  <div class="row">
+  <div class="col-md-9">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;">{dede:myad name='contentMidPicAD'/}</div>
+      {dede:field.body/}
+      {dede:field.vote/}
+      (责任编辑：{dede:adminname/})</td>
+    </tr>
+   </table>
+  
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    {dede:pagebreak/}
+   </ul>
+  </div>
+
+<center>{dede:qrcode/}</center>
+  
+  <!-- /pages -->
+  <!-- //分享代码开始 -->
+  {dede:bshare/}
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>{dede:prenext get='pre'/}</li>
+     <li>{dede:prenext get='next'/}</li>
+    </ul>
+   </div>
+   <!-- /context -->
+  </div>
+  <!-- /handle -->
+ </div>
+<div class="col-md-3">
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <a href="" style="color:rgba(52,152,219,1.00);"><strong>更多内容</strong></a>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      {dede:arclist row=10 orderby=click}
+      <li><a href="[field:arcurl/]">[field:title/]</a></li>
+      {/dede:arclist}
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  </div>
+  </div>
+  </div>
+ <!-- /pright -->
+{dede:include filename="footer.htm"/}
+
+<!-- /footer -->
+<script src="{dede:global.cfg_templeturl/}/imudges/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.easing.1.3.js"></script>
+    <script src="{dede:global.cfg_templeturl/}/imudges/js/bootstrap.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.isotope.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.nicescroll.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/skrollr.min.js"></script>		
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.localscroll-1.2.7-min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/stellar.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.appear.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/validate.js"></script>
+    <script src="{dede:global.cfg_templeturl/}/imudges/js/main.js"></script>
+</body>
+</html>

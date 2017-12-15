@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="{dede:global.cfg_soft_lang/}">
+		<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+		<link rel="stylesheet" href="assets/css/amazeui.min.css" />
+        	<link rel="stylesheet" type="text/css" href="{dede:global.cfg_templeturl/}/imudges/css/isotope.css" media="screen" />	
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/css/bootstrap.css">
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/css/style.css">
+		<!-- skin -->
+		<link rel="stylesheet" href="{dede:global.cfg_templeturl/}/imudges/skin/default.css">
+		<style>
+			@media only screen and (min-width: 1200px) {
+			      .blog-g-fixed {
+			        max-width: 1200px;
+			      }
+			    }
+			
+			    @media only screen and (min-width: 641px) {
+			      .blog-sidebar {
+			        font-size: 1.4rem;
+			      }
+			    }
+			
+			    .blog-main {
+			      padding: 20px 0;
+			    }
+			
+			    .blog-title {
+			      margin: 10px 0 20px 0;
+			    }
+			
+			    .blog-meta {
+			      font-size: 14px;
+			      margin: 10px 0 20px 0;
+			      color: #222;
+			    }
+			
+			    .blog-meta a {
+			      color: #27ae60;
+			    }
+			
+			    .blog-pagination a {
+			      font-size: 1.4rem;
+			    }
+			
+			    .blog-team li {
+			      padding: 4px;
+			    }
+			
+			    .blog-team img {
+			      margin-bottom: 0;
+			    }
+			
+			    .blog-footer {
+			      padding: 10px 0;
+			      text-align: center;
+			    }
+		</style>
+	</head>
+	<body>{dede:include filename="header.htm"/}
+    <section class="featured">
+			<div class="container" > 
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="align-center">
+							<h2 class="slogan">{dede:field.title/}</h2>
+                            <span><div class="info"> <small>时间:</small>{dede:field.pubdate function="MyDate('Y-m-d H:i',@me)"/}<small>来源:</small>{dede:field.source/} <small>作者:</small>{dede:field.writer/} <small>点击:</small>
+   <script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}" type='text/javascript' language="javascript"></script>
+   次</div></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="am-g am-g-fixed blog-g-fixed">
+			<div class="am-u-md-8">
+				<article class="blog-main">
+					<div class="am-g blog-content" style='padding: 10px;'>
+						<table width='100%'>
+							<tr>
+								<td>{dede:field.body/} {dede:field.vote/} (责任编辑：{dede:adminname/})</td>
+							</tr>
+						</table>
+					</div>
+					<div class="dede_pages">
+						<ul data-am-widget="pagination" class="am-pagination am-pagination-default">{dede:pagebreak/}</ul>
+					</div>
+				</article>
+				<!--<hr class="am-article-divider blog-hr">
+
+    <ul class="am-pagination blog-pagination">
+
+      <li class="am-pagination-prev">{dede:prenext get='pre'/}</li>
+
+      <li class="am-pagination-next">{dede:prenext get='next'/}</li>
+
+    </ul>-->
+			</div>
+		</div>{dede:include filename="footer.htm"/}
+		<!--[if lt IE 9]>
+			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+			<script src="assets/js/polyfill/rem.min.js"></script>
+			<script src="assets/js/polyfill/respond.min.js"></script>
+			<script src="assets/js/amazeui.legacy.js"></script>
+		<![endif]-->
+		<!--[if (gte IE 9)|!(IE)]>
+			<!-->
+			
+            <script src="{dede:global.cfg_templeturl/}/imudges/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.easing.1.3.js"></script>
+    <script src="{dede:global.cfg_templeturl/}/imudges/js/bootstrap.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.isotope.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.nicescroll.min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/skrollr.min.js"></script>		
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.localscroll-1.2.7-min.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/stellar.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/jquery.appear.js"></script>
+	<script src="{dede:global.cfg_templeturl/}/imudges/js/validate.js"></script>
+    <script src="{dede:global.cfg_templeturl/}/imudges/js/main.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+		<!--<![endif]-->
+	</body>
+
+</html>
